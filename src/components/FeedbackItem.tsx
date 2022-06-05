@@ -2,14 +2,14 @@ import Card from "./shared/Card";
 import PropTypes from "prop-types";
 import { FaTimes } from "react-icons/fa";
 
-interface Item {
+export interface Feedback {
   id: number;
   rating: number;
   text: string;
 }
 
 interface Props {
-  item: Item;
+  item: Feedback;
   handleDelete: Function;
 }
 

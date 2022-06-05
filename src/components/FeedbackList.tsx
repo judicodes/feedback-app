@@ -1,11 +1,6 @@
-import FeedbackItem from "./FeedbackItem";
+import FeedbackItem, { Feedback } from "./FeedbackItem";
 import PropTypes from "prop-types";
 
-interface Feedback {
-  id: number;
-  rating: number;
-  text: string;
-}
 interface Props {
   feedback: Feedback[];
   handleDelete: Function;
