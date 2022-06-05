@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import { FaTimes } from "react-icons/fa";
 
 export interface Feedback {
-  id: number;
+  id: string;
   rating: number;
   text: string;
 }
