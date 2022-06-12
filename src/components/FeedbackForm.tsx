@@ -1,19 +1,17 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
+import { v4 as uuidv4 } from "uuid";
+import FeedbackContext from "../context/FeedbackContext";
 import { Feedback } from "./FeedbackItem";
 import RatingSelect from "./RatingSelect";
 import Button from "./shared/Button";
 import Card from "./shared/Card";
-import { v4 as uuidv4 } from "uuid";
 
-interface Props {
-  handleAdd: Function;
-}
-
-function FeedbackForm({ handleAdd }: Props) {
+function FeedbackForm() {
   const [text, setText] = useState("");
   const [rating, setRating] = useState(10);
   const [buttonDisabled, setButtonDisabled] = useState(true);
   const [message, setMessage] = useState<string | null>(null);
+  const { addFeedback } = useContext(FeedbackContext);
 
   const validateText = () => {
     if (text === "") {
@@ -42,7 +40,7 @@ function FeedbackForm({ handleAdd }: Props) {
         rating,
         text
       };
-      handleAdd(newFeedback);
+      addFeedback(newFeedback);
       setText("");
     }
   };
