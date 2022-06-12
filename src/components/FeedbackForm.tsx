@@ -11,7 +11,8 @@ function FeedbackForm() {
   const [rating, setRating] = useState(10);
   const [buttonDisabled, setButtonDisabled] = useState(true);
   const [message, setMessage] = useState<string | null>(null);
-  const { addFeedback } = useContext(FeedbackContext);
+  const { addFeedback, updateFeedback, finishEditing, itemToEdit } =
+    useContext(FeedbackContext);
 
   const validateText = () => {
     if (text === "") {
@@ -25,6 +26,13 @@ function FeedbackForm() {
       setMessage(null);
     }
   };
+
+  useEffect(() => {
+    if (!!itemToEdit) {
+      setRating(itemToEdit.rating);
+      setText(itemToEdit.text);
+    }
+  }, [itemToEdit]);
 
   useEffect(validateText, [text]);
 
@@ -40,8 +48,19 @@ function FeedbackForm() {
         rating,
         text
       };
-      addFeedback(newFeedback);
+      if (!!itemToEdit) {
+        const updatedItem = {
+          id: itemToEdit.id,
+          rating,
+          text
+        };
+        updateFeedback(updatedItem);
+        finishEditing();
+      } else {
+        addFeedback(newFeedback);
+      }
       setText("");
+      setRating(10);
     }
   };
 

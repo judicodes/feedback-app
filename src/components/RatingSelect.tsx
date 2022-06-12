@@ -2,7 +2,7 @@ import React from "react";
 
 interface Props {
   selectedRating: number;
-  selectRating: Function;
+  selectRating: (rating: number) => void;
 }
 
 function RatingSelect({ selectedRating, selectRating }: Props) {
