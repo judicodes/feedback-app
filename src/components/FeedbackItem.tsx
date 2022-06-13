@@ -4,7 +4,7 @@ import FeedbackContext from "../context/FeedbackContext";
 import Card from "./shared/Card";
 
 export interface Feedback {
-  id: string;
+  id?: number;
   rating: number;
   text: string;
 }

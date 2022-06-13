@@ -1,5 +1,4 @@
 import React, { useContext, useEffect, useState } from "react";
-import { v4 as uuidv4 } from "uuid";
 import FeedbackContext from "../context/FeedbackContext";
 import { Feedback } from "./FeedbackItem";
 import RatingSelect from "./RatingSelect";
@@ -44,7 +43,6 @@ function FeedbackForm() {
     e.preventDefault();
     if (text.trim().length >= 10) {
       const newFeedback: Feedback = {
-        id: uuidv4(),
         rating,
         text
       };
